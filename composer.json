@@ -1,0 +1,19 @@
+{
+    "name": "mahfuz/google-auth-php",
+    "description": "google OAuth using php-mysql",
+    "type": "prooject",
+    "autoload": {
+        "psr-4": {
+            "Mahfuz\\GoogleAuthPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mahfuzurrahman98",
+            "email": "mdmahfuzurrahmanarif@gmail.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.12.1"
+    }
+}
