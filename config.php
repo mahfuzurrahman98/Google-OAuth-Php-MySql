@@ -20,4 +20,4 @@ $client->setRedirectUri($redirectUri);
 $client->addScope("email");
 $client->addScope("profile");
 
-$db = new mysqli('localhost', 'root', 'pass9859', 'gauth');
+$db = new mysqli('localhost', 'root', '', 'gauth');
