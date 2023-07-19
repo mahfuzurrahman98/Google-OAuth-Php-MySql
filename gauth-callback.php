@@ -2,12 +2,13 @@
 
 ini_set('display_errors', 1);
 
+define('APP_SIGNATURE', 'YOUR_APP_SIGNATURE');
 require_once "config.php";
+
 
 session_start();
 
 if (!isset($_SESSION['google_register']) && !isset($_SESSION['google_login'])) {
-  // header('location: index.php');
   echo ('No access');
   die;
 }

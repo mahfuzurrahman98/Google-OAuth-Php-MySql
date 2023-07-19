@@ -1,6 +1,8 @@
 <?php
 
 ini_set('display_errors', 1);
+
+define('APP_SIGNATURE', 'YOUR_APP_SIGNATURE');
 require_once "config.php";
 
 session_start();
