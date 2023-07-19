@@ -4,7 +4,7 @@
     "type": "prooject",
     "autoload": {
         "psr-4": {
-            "Mahfuz\\GoogleAuthPhp\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [

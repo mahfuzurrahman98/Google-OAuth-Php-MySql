@@ -1,27 +1,38 @@
 <?php
 
 ini_set('display_errors', 1);
+require_once './vendor/autoload.php';
 
 define('APP_SIGNATURE', 'YOUR_APP_SIGNATURE');
-require_once "config.php";
-
 
 session_start();
-
 if (!isset($_SESSION['google_register']) && !isset($_SESSION['google_login'])) {
   echo ('No access');
   die;
 }
 
+use App\Database;
+use App\GoogleClient;
+use Google\Service\Oauth2;
+
+
+$db = Database::getConnection();
+$client = new GoogleClient();
+
+
 
 if (isset($_GET['code'])) {
   $code = $_GET['code'];
-  $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+
+  $token = $client->getAccessToken($_GET['code']);
+
   $client->setAccessToken($token['access_token']);
+  // var_dump($code);
+  // die;
 
 
   // get profile info
-  $google_oauth = new Google_Service_Oauth2($client);
+  $google_oauth = new Oauth2($client->getClient());
   $google_account_info = $google_oauth->userinfo->get();
 
   $email =  $google_account_info->email;

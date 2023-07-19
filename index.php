@@ -2,12 +2,17 @@
 
 ini_set('display_errors', 1);
 
+require_once './vendor/autoload.php';
+
 define('APP_SIGNATURE', 'YOUR_APP_SIGNATURE');
-require_once "config.php";
 
 session_start();
 
 // dd($_SESSION);
+
+use App\Database;
+
+$db = Database::getConnection();
 
 if (!isset($_SESSION['is_logged_in'])) {
   header('location: login.php');

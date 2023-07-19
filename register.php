@@ -1,22 +1,26 @@
 <?php
+
 ini_set('display_errors', 1);
+require_once './vendor/autoload.php';
 
 define('APP_SIGNATURE', 'YOUR_APP_SIGNATURE');
-require_once "config.php";
-
-
 session_start();
-
-// dd($_SESSION);
-
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['is_logged_in'])) {
   header('location: index.php');
 }
+
+use App\Database;
+use App\GoogleClient;
+
+
+$db = Database::getConnection();
+$client = new GoogleClient();
+
 
 
 if (isset($_POST['google'])) {
   $_SESSION['google_register'] = 1;
-  $auth_url = $client->createAuthUrl();
+  $auth_url = $client->getAuthUrl();
   header('location: ' . $auth_url);
 }
 
